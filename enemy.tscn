@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://e58nqamc1fvl"]
+[gd_scene load_steps=9 format=3 uid="uid://e58nqamc1fvl"]
 
 [ext_resource type="Texture2D" uid="uid://bfvjqpdy1yspp" path="res://Mini Pixel Pack 3/Enemies/Bon_Bon (16 x 16).png" id="1_7k104"]
+[ext_resource type="Script" uid="uid://b8lq1sjxkmolv" path="res://enemy.gd" id="1_qi2p4"]
 [ext_resource type="Texture2D" uid="uid://dn1edfs6n7tjr" path="res://Mini Pixel Pack 3/Effects/Explosion (16 x 16).png" id="2_4gyqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
@@ -136,6 +137,7 @@ _data = {
 }
 
 [node name="Enemy" type="Area2D" groups=["enemies"]]
+script = ExtResource("1_qi2p4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7k104")
@@ -157,3 +159,6 @@ one_shot = true
 
 [node name="ShootTimer" type="Timer" parent="."]
 one_shot = true
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
