@@ -1,11 +1,13 @@
 extends Node2D
 
 @onready var start_button = $CanvasLayer/CenterContainer/Start
+@onready var game_over = $CanvasLayer/CenterContainer/GameOver
 
 var enemy := preload("res://enemy.tscn")
 var score := 0
 
 func _ready() -> void:
+	game_over.hide()
 	start_button.show()
 	#start()
 	
@@ -35,3 +37,11 @@ func new_game():
 	$Player.start()
 	#spawn_enemies()
 	start()
+
+
+func _on_player_died() -> void:
+	get_tree().call_group("enemies", "queue_free")
+	game_over.show()
+	await get_tree().create_timer(2).timeout
+	game_over.hide()
+	start_button.show()

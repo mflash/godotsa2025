@@ -20,6 +20,7 @@ func _ready() -> void:
 	
 func start() -> void:
 	position = Vector2(screensize.x/2, screensize.y - 64)
+	show()
 	$GunCooldown.wait_time = cooldown
 	
 func _process(delta: float) -> void:
