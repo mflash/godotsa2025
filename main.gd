@@ -3,7 +3,7 @@ extends Node2D
 @onready var start_button = $CanvasLayer/CenterContainer/Start
 @onready var game_over = $CanvasLayer/CenterContainer/GameOver
 
-var enemy := preload("res://enemy.tscn")
+var enemy := preload("res://enemy/enemy.tscn")
 var score := 0
 
 func _ready() -> void:
