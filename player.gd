@@ -3,9 +3,17 @@ extends Area2D
 @export var speed = 150
 @export var cooldown = 0.25
 @export var bullet_scene : PackedScene
+@export var max_shield := 10
+var shield = max_shield:
+	set = set_shield
+
 @onready var screensize = get_viewport_rect().size
 
 var can_shoot := true
+
+signal died
+signal shield_changed
+
 
 func _ready() -> void:
 	start()
@@ -42,3 +50,16 @@ func shoot():
 
 func _on_gun_cooldown_timeout() -> void:
 	can_shoot = true
+	
+func set_shield(value):
+	shield = min(max_shield, value)
+	shield_changed.emit(max_shield, shield)
+	if shield <= 0:
+		hide()
+		died.emit()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemies"):
+		area.explode()
+		shield -= max_shield / 2

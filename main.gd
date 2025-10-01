@@ -8,6 +8,7 @@ func _ready() -> void:
 	
 	
 func start() -> void:
+	$Player.shield = 10
 	for x in range(9):
 		for y in range(3):
 			var e = enemy.instantiate()

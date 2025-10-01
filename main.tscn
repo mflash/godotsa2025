@@ -64,3 +64,5 @@ autoplay = "scroll"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
+
+[connection signal="shield_changed" from="Player" to="CanvasLayer/UI" method="update_shield"]
