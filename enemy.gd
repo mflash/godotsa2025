@@ -5,6 +5,8 @@ var speed = 0
 
 @onready var screensize  = get_viewport_rect().size
 
+var bullet_scene = preload("res://enemy_bullet.tscn")
+
 signal died
 
 func start(pos):
@@ -26,6 +28,9 @@ func _on_move_timer_timeout() -> void:
 
 
 func _on_shoot_timer_timeout() -> void:
+	var b = bullet_scene.instantiate()
+	get_tree().root.add_child(b)
+	b.start(position)
 	$ShootTimer.wait_time = randf_range(4, 20)
 	$ShootTimer.start()
 
