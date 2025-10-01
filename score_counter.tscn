@@ -1,39 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu7e706o3yjjr"]
+[gd_scene load_steps=3 format=3 uid="uid://cu7e706o3yjjr"]
 
 [ext_resource type="Script" uid="uid://cwurso1r8anvn" path="res://score_counter.gd" id="1_t7i3n"]
-[ext_resource type="Texture2D" uid="uid://c0lmfobnrs7br" path="res://Mini Pixel Pack 3/UI objects/Number_font (8 x 8).png" id="1_terno"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t7i3n"]
-atlas = ExtResource("1_terno")
-region = Rect2(32, 8, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_knege"]
-atlas = ExtResource("1_terno")
-region = Rect2(32, 8, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qa8aw"]
-atlas = ExtResource("1_terno")
-region = Rect2(32, 8, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pd82r"]
-atlas = ExtResource("1_terno")
-region = Rect2(32, 8, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j44f5"]
-atlas = ExtResource("1_terno")
-region = Rect2(32, 8, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_emiqc"]
-atlas = ExtResource("1_terno")
-region = Rect2(32, 8, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_inuy1"]
-atlas = ExtResource("1_terno")
-region = Rect2(32, 8, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke503"]
-atlas = ExtResource("1_terno")
-region = Rect2(32, 8, 8, 8)
+[ext_resource type="FontFile" uid="uid://b7yxueumqd2h8" path="res://PixelGameFont.ttf" id="3_knege"]
 
 [node name="ScoreCounter" type="HBoxContainer"]
 anchors_preset = 10
@@ -43,42 +11,8 @@ theme_override_constants/separation = 0
 alignment = 2
 script = ExtResource("1_t7i3n")
 
-[node name="Digit0" type="TextureRect" parent="."]
+[node name="Score" type="Label" parent="."]
 layout_mode = 2
-texture = SubResource("AtlasTexture_t7i3n")
-stretch_mode = 5
-
-[node name="Digit1" type="TextureRect" parent="."]
-layout_mode = 2
-texture = SubResource("AtlasTexture_knege")
-stretch_mode = 5
-
-[node name="Digit2" type="TextureRect" parent="."]
-layout_mode = 2
-texture = SubResource("AtlasTexture_qa8aw")
-stretch_mode = 5
-
-[node name="Digit3" type="TextureRect" parent="."]
-layout_mode = 2
-texture = SubResource("AtlasTexture_pd82r")
-stretch_mode = 5
-
-[node name="Digit4" type="TextureRect" parent="."]
-layout_mode = 2
-texture = SubResource("AtlasTexture_j44f5")
-stretch_mode = 5
-
-[node name="Digit5" type="TextureRect" parent="."]
-layout_mode = 2
-texture = SubResource("AtlasTexture_emiqc")
-stretch_mode = 5
-
-[node name="Digit6" type="TextureRect" parent="."]
-layout_mode = 2
-texture = SubResource("AtlasTexture_inuy1")
-stretch_mode = 5
-
-[node name="Digit7" type="TextureRect" parent="."]
-layout_mode = 2
-texture = SubResource("AtlasTexture_ke503")
-stretch_mode = 5
+theme_override_fonts/font = ExtResource("3_knege")
+theme_override_font_sizes/font_size = 11
+text = "19219"
