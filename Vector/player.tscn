@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://d35gy32nadcbc"]
+
+[ext_resource type="Script" uid="uid://bu3foiy3v154y" path="res://Vector/player.gd" id="1_ceml8"]
+[ext_resource type="Texture2D" uid="uid://dl86ps7cq7ei" path="res://PNG/Planes/planeYellow1.png" id="2_js7x2"]
+[ext_resource type="Texture2D" uid="uid://bqbi2fg4xe0cg" path="res://PNG/Planes/planeYellow2.png" id="3_5s3to"]
+[ext_resource type="Texture2D" uid="uid://b5u1jbuvo0bix" path="res://PNG/Planes/planeYellow3.png" id="4_dn6iy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d21ai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_js7x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5s3to")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dn6iy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
+size = Vector2(87, 75)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ceml8")
+climb = 800
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d21ai")
+autoplay = "default"
+frame_progress = 0.618359
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_q6r6c")
