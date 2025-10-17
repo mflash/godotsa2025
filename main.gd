@@ -25,7 +25,7 @@ func _on_rock_down_timer_timeout() -> void:
 	rock.position.y = screen_size.size.y - rock.scale.y * sprite.get_rect().size.y/2
 	rock.position.x = screen_size.size.x + 50
 	add_child(rock)
-	$RockDownTimer.wait_time = randf_range(1, 5)
+	$RockDownTimer.wait_time = randf_range(2, 5)
 	rock.connect("add_score", _on_add_to_score)
 	
 
@@ -38,7 +38,7 @@ func _on_rock_up_timer_timeout() -> void:
 	rock.position.x = screen_size.size.x + 50
 	rock.rotation_degrees = 180
 	add_child(rock)
-	$RockUpTimer.wait_time = randf_range(1, 5)
+	$RockUpTimer.wait_time = randf_range(2, 5)
 	rock.connect("add_score", _on_add_to_score)
 
 func _on_add_to_score() -> void:
