@@ -12,13 +12,8 @@ func _ready() -> void:
 	$Foreground.z_index = 1
 	$RockDownTimer.wait_time = randf_range(2, 5)
 	$RockUpTimer.wait_time = randf_range(2, 5)
-	
-	print("Down: ",$RockDownTimer.wait_time)
-	print("Up:   ",$RockUpTimer.wait_time)
-
 
 func _on_rock_down_timer_timeout() -> void:
-	#print("Down timer")
 	var rock_num := randi_range(0, rocks.size()-1)
 	var rock := rocks[rock_num].instantiate()
 	var sprite := rock.get_node("Sprite2D")
@@ -30,7 +25,6 @@ func _on_rock_down_timer_timeout() -> void:
 	
 
 func _on_rock_up_timer_timeout() -> void:
-	#print("Up timer")
 	var rock_num := randi_range(0, rocks.size()-1)
 	var rock := rocks[rock_num].instantiate()
 	var sprite := rock.get_node("Sprite2D")

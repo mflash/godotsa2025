@@ -32,15 +32,15 @@ repeat_times = 2
 position = Vector2(404, 444)
 texture = ExtResource("2_0xm2m")
 
+[node name="Player" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(96, 223)
+scale = Vector2(0.5, 0.5)
+
 [node name="RockDownTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="RockUpTimer" type="Timer" parent="."]
 autostart = true
-
-[node name="Player" parent="." instance=ExtResource("5_lquwl")]
-position = Vector2(96, 223)
-scale = Vector2(0.5, 0.5)
 
 [connection signal="timeout" from="RockDownTimer" to="." method="_on_rock_down_timer_timeout"]
 [connection signal="timeout" from="RockUpTimer" to="." method="_on_rock_up_timer_timeout"]
