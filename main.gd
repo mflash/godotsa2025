@@ -10,8 +10,17 @@ func _ready() -> void:
 	print("Total rocks:",rocks.size())
 	$Background.z_index = -1
 	$Foreground.z_index = 1
+	start_game()
+	
+func start_game() -> void:
+	$GameOverSprite.visible = false
+	#$GetReadySprite.visible = true
+	#await get_tree().create_timer(3.0).timeout
+	#$GetReadySprite.visible = false
 	$RockDownTimer.wait_time = randf_range(2, 5)
 	$RockUpTimer.wait_time = randf_range(2, 5)
+	$RockDownTimer.start()
+	$RockUpTimer.start() 
 
 func _on_rock_down_timer_timeout() -> void:
 	var rock_num := randi_range(0, rocks.size()-1)
@@ -22,7 +31,8 @@ func _on_rock_down_timer_timeout() -> void:
 	add_child(rock)
 	$RockDownTimer.wait_time = randf_range(2, 5)
 	rock.connect("add_score", _on_add_to_score)
-	
+	rock.connect("crash", _on_crash)
+		
 
 func _on_rock_up_timer_timeout() -> void:
 	var rock_num := randi_range(0, rocks.size()-1)
@@ -34,7 +44,14 @@ func _on_rock_up_timer_timeout() -> void:
 	add_child(rock)
 	$RockUpTimer.wait_time = randf_range(2, 5)
 	rock.connect("add_score", _on_add_to_score)
+	rock.connect("crash", _on_crash)
 
 func _on_add_to_score() -> void:
 	score += 1
 	print("Score: ",str(score))
+
+func _on_crash() -> void:
+	$Player.queue_free()
+	$GameOverSprite.visible = true
+	await get_tree().create_timer(5.0).timeout
+	get_tree().reload_current_scene()

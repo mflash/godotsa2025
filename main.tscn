@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtthkfs7xo3ra"]
+[gd_scene load_steps=10 format=3 uid="uid://dtthkfs7xo3ra"]
 
 [ext_resource type="Script" uid="uid://bx3b8mnpmlfdy" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://1a5bbcmlqve6" path="res://PNG/background.png" id="1_ig7tw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://uq3gdg0inugm" path="res://rock_ice.tscn" id="4_kek77"]
 [ext_resource type="PackedScene" uid="uid://bj1vvt4q0wxhw" path="res://rock_snow.tscn" id="5_4c57u"]
 [ext_resource type="PackedScene" uid="uid://br500ntu3xu7v" path="res://player.tscn" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cmht8gulr5vui" path="res://Spritesheet/sheet.png" id="9_kek77"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h2yge")
@@ -37,10 +38,20 @@ position = Vector2(96, 223)
 scale = Vector2(0.5, 0.5)
 
 [node name="RockDownTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="RockUpTimer" type="Timer" parent="."]
-autostart = true
+
+[node name="GameOverSprite" type="Sprite2D" parent="."]
+position = Vector2(399, 227)
+texture = ExtResource("9_kek77")
+region_enabled = true
+region_rect = Rect2(0, 836.02936, 413.00012, 74.09076)
+
+[node name="GetReadySprite" type="Sprite2D" parent="."]
+position = Vector2(397, 224)
+texture = ExtResource("9_kek77")
+region_enabled = true
+region_rect = Rect2(-1.0404358, 909.8175, 402.19516, 72.43732)
 
 [connection signal="timeout" from="RockDownTimer" to="." method="_on_rock_down_timer_timeout"]
 [connection signal="timeout" from="RockUpTimer" to="." method="_on_rock_up_timer_timeout"]
