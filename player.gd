@@ -4,10 +4,16 @@ extends CharacterBody2D
 @export var climb = 500
 @export var max_speed = 500
 
-func _physics_process(delta: float) -> void:
-	velocity.y += gravity * delta
-	move_and_slide()
+@onready var started = false
 	
+func _physics_process(delta: float) -> void:
+	if started:
+		velocity.y += gravity * delta
+		move_and_slide()
+
+func start() -> void:
+	started = true
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		velocity.y -= climb

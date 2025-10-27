@@ -14,13 +14,14 @@ func _ready() -> void:
 	
 func start_game() -> void:
 	$GameOverSprite.visible = false
-	#$GetReadySprite.visible = true
-	#await get_tree().create_timer(3.0).timeout
-	#$GetReadySprite.visible = false
+	$GetReadySprite.visible = true
+	await get_tree().create_timer(3.0).timeout
+	$GetReadySprite.visible = false
 	$RockDownTimer.wait_time = randf_range(2, 5)
 	$RockUpTimer.wait_time = randf_range(2, 5)
 	$RockDownTimer.start()
-	$RockUpTimer.start() 
+	$RockUpTimer.start()
+	$Player.start() 
 
 func _on_rock_down_timer_timeout() -> void:
 	var rock_num := randi_range(0, rocks.size()-1)
@@ -48,7 +49,8 @@ func _on_rock_up_timer_timeout() -> void:
 
 func _on_add_to_score() -> void:
 	score += 1
-	print("Score: ",str(score))
+	#print("Score: ",str(score))
+	$HUD.update_score(score)
 
 func _on_crash() -> void:
 	$Player.queue_free()

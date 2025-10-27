@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtthkfs7xo3ra"]
+[gd_scene load_steps=12 format=3 uid="uid://dtthkfs7xo3ra"]
 
 [ext_resource type="Script" uid="uid://bx3b8mnpmlfdy" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://1a5bbcmlqve6" path="res://PNG/background.png" id="1_ig7tw"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bj1vvt4q0wxhw" path="res://rock_snow.tscn" id="5_4c57u"]
 [ext_resource type="PackedScene" uid="uid://br500ntu3xu7v" path="res://player.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cmht8gulr5vui" path="res://Spritesheet/sheet.png" id="9_kek77"]
+[ext_resource type="Script" uid="uid://djqpr8km2lv2y" path="res://hud.gd" id="10_efxa6"]
+[ext_resource type="FontFile" uid="uid://sotptq6l6677" path="res://Font/kenvector_future.ttf" id="11_dg77c"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h2yge")
@@ -45,13 +47,28 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(399, 227)
 texture = ExtResource("9_kek77")
 region_enabled = true
-region_rect = Rect2(0, 836.02936, 413.00012, 74.09076)
+region_rect = Rect2(0, 836.02936, 411.75714, 71.82959)
 
 [node name="GetReadySprite" type="Sprite2D" parent="."]
 position = Vector2(397, 224)
 texture = ExtResource("9_kek77")
 region_enabled = true
-region_rect = Rect2(-1.0404358, 909.8175, 402.19516, 72.43732)
+region_rect = Rect2(-1.0404358, 912.66406, 401.149, 66.49109)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("10_efxa6")
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.5
+offset_right = 111.5
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7607843, 0.39607844, 0, 1)
+theme_override_fonts/font = ExtResource("11_dg77c")
+theme_override_font_sizes/font_size = 40
 
 [connection signal="timeout" from="RockDownTimer" to="." method="_on_rock_down_timer_timeout"]
 [connection signal="timeout" from="RockUpTimer" to="." method="_on_rock_up_timer_timeout"]
