@@ -51,9 +51,11 @@ func _on_add_to_score() -> void:
 	score += 1
 	#print("Score: ",str(score))
 	$HUD.update_score(score)
+	$ScoreSound.play()
 
 func _on_crash() -> void:
 	$Player.queue_free()
 	$GameOverSprite.visible = true
+	$CrashSound.play()
 	await get_tree().create_timer(5.0).timeout
 	get_tree().reload_current_scene()

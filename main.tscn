@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtthkfs7xo3ra"]
+[gd_scene load_steps=14 format=3 uid="uid://dtthkfs7xo3ra"]
 
 [ext_resource type="Script" uid="uid://bx3b8mnpmlfdy" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://1a5bbcmlqve6" path="res://PNG/background.png" id="1_ig7tw"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cmht8gulr5vui" path="res://Spritesheet/sheet.png" id="9_kek77"]
 [ext_resource type="Script" uid="uid://djqpr8km2lv2y" path="res://hud.gd" id="10_efxa6"]
 [ext_resource type="FontFile" uid="uid://sotptq6l6677" path="res://Font/kenvector_future.ttf" id="11_dg77c"]
+[ext_resource type="AudioStream" uid="uid://csbm6kuqn8y7g" path="res://coin.mp3" id="12_ycdy4"]
+[ext_resource type="AudioStream" uid="uid://bpiqbvucy3xnt" path="res://explosion.mp3" id="13_w48qg"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h2yge")
@@ -69,6 +71,12 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.7607843, 0.39607844, 0, 1)
 theme_override_fonts/font = ExtResource("11_dg77c")
 theme_override_font_sizes/font_size = 40
+
+[node name="ScoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ycdy4")
+
+[node name="CrashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_w48qg")
 
 [connection signal="timeout" from="RockDownTimer" to="." method="_on_rock_down_timer_timeout"]
 [connection signal="timeout" from="RockUpTimer" to="." method="_on_rock_up_timer_timeout"]
